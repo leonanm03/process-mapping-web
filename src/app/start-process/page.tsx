@@ -1,20 +1,23 @@
 "use client";
 
-import { HandleChangeFields } from "@/protocols";
+import { CreateProcess, HandleChangeFields } from "@/protocols";
 import { createProcess } from "@/services";
 import Head from "next/head";
 import React, { useState } from "react";
 
 export default function StartProcess() {
-  const [body, setBody] = useState({
+  const [body, setBody] = useState<CreateProcess>({
     name: "",
     areaId: 1,
     description: "",
   });
 
   function handleChange(e: HandleChangeFields) {
-    console.log(e.target.value);
     setBody({ ...body, [e.target.name]: e.target.value });
+  }
+
+  function handleAreaIdChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setBody({ ...body, [e.target.name]: parseInt(e.target.value) });
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -66,13 +69,13 @@ export default function StartProcess() {
                 <select
                   name="areaId"
                   className="select select-bordered w-full text-primary"
-                  onChange={handleChange}
+                  onChange={handleAreaIdChange}
                   defaultValue={body.areaId}
                 >
                   <option value={1}>Area 1</option>
-                  <option>Area 2</option>
-                  <option>Area 3</option>
-                  <option>Area 4</option>
+                  <option value={2}>Area 2</option>
+                  <option value={3}>Area 3</option>
+                  <option value={4}>Area 4</option>
                 </select>
               </div>
 
