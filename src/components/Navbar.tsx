@@ -30,10 +30,10 @@ export function Navbar() {
               <a href="/">Homepage</a>
             </li>
             <li>
-              <a href="/start-process">Abrir processo</a>
+              <a href="/processes">Processos</a>
             </li>
             <li>
-              <a>Link 2</a>
+              <a href="/start-process">Abrir processo</a>
             </li>
             <li>
               <a>Link 3</a>
