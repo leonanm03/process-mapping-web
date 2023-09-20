@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
@@ -11,5 +11,3 @@ export function authorization(token: string) {
     },
   };
 }
-
-export default api;
