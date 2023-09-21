@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html data-theme="corporate" lang="pt-BR">
+    <html data-theme="corporate" lang="pt-BR" className="bg-base-200">
       <body suppressHydrationWarning={true} className={inter.className}>
         <Navbar />
         {children}

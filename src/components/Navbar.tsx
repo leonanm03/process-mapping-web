@@ -1,6 +1,6 @@
 export function Navbar() {
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-base-300">
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl" href="/">
           <img src="https://stage.consulting/favicon.png" alt="logo" />
