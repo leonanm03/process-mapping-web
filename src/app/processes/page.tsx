@@ -16,7 +16,7 @@ export default function Processes() {
   }, []);
 
   return (
-    <main className="flex flex-col justify-center p-6">
+    <main className="flex flex-col justify-center p-6 bg-base-200">
       {processes.length > 0 &&
         processes.map((process) => (
           <div key={process.id} className="collapse bg-accent mt-5 ">
