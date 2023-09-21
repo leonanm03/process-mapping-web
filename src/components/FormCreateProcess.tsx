@@ -1,16 +1,15 @@
-import { CreateProcess, HandleChangeFields } from "@/protocols";
+import {
+  CreateProcess,
+  CreateProcessForm,
+  HandleChangeFields,
+} from "@/protocols";
 
 export function FormCreateProcess({
   body,
   setBody,
   handleSubmit,
   children,
-}: {
-  body: CreateProcess;
-  setBody: React.Dispatch<React.SetStateAction<CreateProcess>>;
-  handleSubmit: React.FormEventHandler<HTMLFormElement>;
-  children: React.ReactNode;
-}) {
+}: CreateProcessForm) {
   function handleChange(e: HandleChangeFields) {
     setBody({ ...body, [e.target.name]: e.target.value });
   }
