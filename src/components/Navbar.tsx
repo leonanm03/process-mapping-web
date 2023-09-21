@@ -3,7 +3,7 @@ export function Navbar() {
     <div className="navbar bg-base-200">
       <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl" href="/">
-          <img src="./logo.png" alt="logo" />
+          <img src="https://stage.consulting/favicon.png" alt="logo" />
           Process Mapping
         </a>
       </div>
