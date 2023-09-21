@@ -1,79 +1,42 @@
 "use client";
 import { SubprocessCascade } from "@/components/SubprocessCascade";
 import { GetProcess } from "@/protocols";
-import { api } from "@/services";
+import { getProcesses } from "@/services/get-processes";
 import { useEffect, useState } from "react";
 
 export default function Processes() {
   const [processes, setProcesses] = useState<GetProcess[]>([]);
 
   useEffect(() => {
-    const data = api.get<GetProcess[]>("/processes");
-    data
-      .then((response) => {
-        setProcesses(response.data);
+    getProcesses()
+      .then((processes) => {
+        setProcesses(processes);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => console.log(err));
   }, []);
 
   return (
-    // <div className="row">
-    //   <ul className="list-disc pl-5">
-    //     {processes.map((process) => (
-    //       <li key={process.id}>
-    //         {process.name}
-    //         {process.subProcess.map((subprocess) => (
-    //           <SubprocessCascade key={subprocess.id} {...subprocess} />
-    //         ))}
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
-
-    <main className="flex justify-center p-6">
-      <div className="collapse bg-base-300 ">
-        <input type="checkbox" />
-        <div className="collapse-title text-xl font-medium">
-          Click me to show/hide content
-        </div>
-        <div className="collapse-content">
-          <div className="collapse bg-base-300 max-w-max">
+    <main className="flex flex-col justify-center p-6">
+      {processes.length > 0 &&
+        processes.map((process) => (
+          <div key={process.id} className="collapse bg-accent mt-5 ">
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">
-              Click me to show/hide content
+            <div className="collapse-title text-xl font-medium ">
+              {process.name}
             </div>
-            <div className="collapse-content">
-              <div className="collapse bg-base-300 max-w-max">
-                <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium">
-                  Click me to show/hide content
-                </div>
-                <div className="collapse-content">
-                  <div className="collapse bg-base-300 max-w-max">
-                    <input type="checkbox" />
-                    <div className="collapse-title text-xl font-medium">
-                      Click me to show/hide content
-                    </div>
-                    <div className="collapse-content">
-                      <div className="collapse bg-base-300 max-w-max">
-                        <input type="checkbox" />
-                        <div className="collapse-title text-xl font-medium">
-                          Click me to show/hide content
-                        </div>
-                        <div className="collapse-content">
-                          <p>hello</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="collapse-content bg-accent pr-2 ">
+              <div> name: {process.name}</div>
+              <div> id: {process.id}</div>
+              {process.description && (
+                <div> description: {process.description}</div>
+              )}
+              {process.subProcess.length > 0 && <div>subprocessos:</div>}
+              {process.subProcess.map((subprocess) => (
+                <SubprocessCascade key={subprocess.id} {...subprocess} />
+              ))}
             </div>
           </div>
-        </div>
-      </div>
+        ))}
     </main>
   );
 }
