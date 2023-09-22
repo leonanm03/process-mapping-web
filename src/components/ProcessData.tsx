@@ -1,8 +1,24 @@
 import { GetProcess } from "@/protocols";
+import { deleteProcess, getProcesses } from "@/services";
 
 export function ProcessData(process: GetProcess) {
   const { id, name, description, fatherProcessId, area } = process;
 
+  async function handleDeleteProcess() {
+    if (
+      confirm(
+        `Deseja excluir o processo ${name}?\n Isso fará com que todos seus os subprocessos sejam excluídos também.`
+      )
+    ) {
+      try {
+        await deleteProcess(id);
+        const processes = await getProcesses();
+        console.log(processes);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -38,7 +54,10 @@ export function ProcessData(process: GetProcess) {
                   >
                     Editar
                   </a>
-                  <button className="btn btn-secondary btn-xs m-1">
+                  <button
+                    onClick={handleDeleteProcess}
+                    className="btn btn-secondary btn-xs m-1"
+                  >
                     Excluir
                   </button>
                 </div>
