@@ -52,7 +52,7 @@ export function FormCreateProcess({
             name="areaId"
             className="select select-bordered w-full text-primary"
             onChange={handleAreaIdChange}
-            defaultValue={body.areaId}
+            value={body.areaId}
           >
             {areas.map((area) => (
               <option key={area.id} value={area.id}>
