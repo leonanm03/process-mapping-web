@@ -56,7 +56,7 @@ export function ProcessData(process: GetProcess) {
                   </a>
                   <button
                     onClick={handleDeleteProcess}
-                    className="btn btn-secondary btn-xs m-1"
+                    className="btn btn-warning btn-xs m-1"
                   >
                     Excluir
                   </button>
