@@ -4,3 +4,4 @@ export * from "./get-processes";
 export * from "./get-areas";
 export * from "./update-process";
 export * from "./get-process";
+export * from "./delete-process";
