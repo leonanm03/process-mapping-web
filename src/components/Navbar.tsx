@@ -35,9 +35,6 @@ export function Navbar() {
             <li>
               <a href="/start-process">Abrir processo</a>
             </li>
-            <li>
-              <a>Link 3</a>
-            </li>
           </ul>
         </div>
       </div>
