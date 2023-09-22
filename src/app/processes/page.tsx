@@ -1,21 +1,11 @@
 "use client";
 import { ProcessData } from "@/components";
 import { SubprocessCascade } from "@/components/SubprocessCascade";
-import { GetProcess } from "@/protocols";
-import { getProcesses } from "@/services/get-processes";
-import { useEffect, useState } from "react";
+import { ProcessesContext } from "@/contexts/processesContext";
+import { useContext } from "react";
 
 export default function Processes() {
-  const [processes, setProcesses] = useState<GetProcess[]>([]);
-
-  useEffect(() => {
-    getProcesses()
-      .then((processes) => {
-        setProcesses(processes);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+  const { processes } = useContext(ProcessesContext);
   return (
     <main className="flex flex-col justify-center p-6 bg-base-200">
       {processes.length > 0 &&

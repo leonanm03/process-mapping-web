@@ -1,8 +1,11 @@
+import { ProcessesContext } from "@/contexts/processesContext";
 import { GetProcess } from "@/protocols";
 import { deleteProcess, getProcesses } from "@/services";
+import { useContext } from "react";
 
 export function ProcessData(process: GetProcess) {
   const { id, name, description, fatherProcessId, area } = process;
+  const { refreshProcesses } = useContext(ProcessesContext);
 
   async function handleDeleteProcess() {
     if (
@@ -12,8 +15,7 @@ export function ProcessData(process: GetProcess) {
     ) {
       try {
         await deleteProcess(id);
-        const processes = await getProcesses();
-        console.log(processes);
+        refreshProcesses();
       } catch (error) {
         console.log(error);
       }

@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components";
+import { ProcessesProvider } from "@/contexts/processesContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html data-theme="corporate" lang="pt-BR" className="bg-base-200">
       <body suppressHydrationWarning={true} className={inter.className}>
-        <Navbar />
-        {children}
+        <ProcessesProvider>
+          <Navbar />
+          {children}
+        </ProcessesProvider>
       </body>
     </html>
   );
