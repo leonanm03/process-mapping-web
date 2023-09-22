@@ -1,20 +1,28 @@
 "use client";
 import { FormCreateProcess } from "@/components";
 import { CreateProcess } from "@/protocols";
-import { createProcess } from "@/services";
-import { useState } from "react";
+import { GetProcess, createProcess } from "@/services";
+import { useEffect, useState } from "react";
 
 export default function StartSubprocess({
   params,
 }: {
   params: { fatherId: string };
 }) {
+  const { fatherId } = params;
+  const [fatherName, setFatherName] = useState("");
   const [body, setBody] = useState<CreateProcess>({
     name: "",
     areaId: 1,
     description: "",
-    fatherProcessId: params.fatherId,
+    fatherProcessId: fatherId,
   });
+
+  useEffect(() => {
+    GetProcess(fatherId).then((process) => {
+      setFatherName(process.name);
+    });
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,7 +39,9 @@ export default function StartSubprocess({
     <main className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left text-primary">
-          <h1 className="text-5xl font-bold">Abra um subprocesso</h1>
+          <h1 className="text-5xl font-bold">
+            Abra um subprocesso {fatherName && `para ${fatherName}`}
+          </h1>
           <p className="py-6 text-xl">
             Dê um nome ao subprocesso, selecione a área e descreva o
             subprocesso.
