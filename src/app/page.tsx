@@ -1,14 +1,5 @@
 "use client";
-import {
-  Button,
-  Flex,
-  Heading,
-  Link,
-  Stack,
-  Text,
-  textDecoration,
-} from "@chakra-ui/react";
-import { text } from "stream/consumers";
+import { Button, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 
 export default function Home() {
   return (
@@ -22,9 +13,9 @@ export default function Home() {
     >
       <Stack textAlign="center">
         <Heading>
-          Olá, Bem vindo(a) ao <Text color="purple.400">Process Mapping</Text>
+          Olá, Bem vindo(a) ao <Text color="purple.500">Process Mapping</Text>
         </Heading>
-        <Text fontSize="20px">
+        <Text fontSize="20px" maxW="500px">
           Aqui você poderá mapear e gerenciar seus processos de sua empresa de
           forma simples e intuitiva.
         </Text>
