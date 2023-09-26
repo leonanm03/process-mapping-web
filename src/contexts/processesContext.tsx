@@ -19,11 +19,11 @@ export const ProcessesProvider = ({
 }) => {
   const [processes, setProcesses] = useState<GetProcess[]>([]);
 
-  // useEffect(() => {
-  //   getProcesses().then((processes) => {
-  //     setProcesses(processes);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getProcesses().then((processes) => {
+      setProcesses(processes);
+    });
+  }, []);
 
   const refreshProcesses = () => {
     getProcesses().then((processes) => {

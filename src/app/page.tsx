@@ -1,24 +1,42 @@
+"use client";
+import {
+  Button,
+  Flex,
+  Heading,
+  Link,
+  Stack,
+  Text,
+  textDecoration,
+} from "@chakra-ui/react";
+import { text } from "stream/consumers";
+
 export default function Home() {
   return (
-    <main className="hero min-h-screen bg-base-200">
-      <div className="hero-content text-center">
-        <div className="max-w-lg">
-          <h1 className="text-3xl font-bold">
-            Olá, bem-vindo(a) ao <br />
-            Process Mapping
-          </h1>
-          <p className="py-6">
-            Aqui você poderá mapear e gerenciar seus processos de sua empresa de
-            forma simples e intuitiva.
-          </p>
-          <a href="/processes" className="btn btn-primary m-6">
-            Processos
-          </a>
-          <a href="/start-process" className="btn btn-primary m-6">
-            Novo processo
-          </a>
-        </div>
-      </div>
-    </main>
+    <Flex
+      as="main"
+      h="calc(100vh - 60px)"
+      w="100vw"
+      alignItems="center"
+      justifyContent="center"
+      bg="purple.50"
+    >
+      <Stack textAlign="center">
+        <Heading>
+          Olá, Bem vindo(a) ao <Text color="purple.400">Process Mapping</Text>
+        </Heading>
+        <Text fontSize="20px">
+          Aqui você poderá mapear e gerenciar seus processos de sua empresa de
+          forma simples e intuitiva.
+        </Text>
+        <Flex justifyContent="center" gap={8} mt="20px">
+          <Button variant="link" size="lg" colorScheme="purple">
+            <Link href="/processes">Processos</Link>
+          </Button>
+          <Button variant="link" size="lg" colorScheme="purple">
+            <Link href="/start-process">Abir Processo</Link>
+          </Button>
+        </Flex>
+      </Stack>
+    </Flex>
   );
 }
