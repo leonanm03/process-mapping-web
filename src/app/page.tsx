@@ -1,7 +1,23 @@
 "use client";
 import { Button, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const route = useRouter();
+  const routes = [
+    {
+      name: "/processes",
+      label: "Processos",
+    },
+    {
+      name: "/start-process",
+      label: "Abrir Processo",
+    },
+  ];
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+    route.push(event.currentTarget.name);
+
   return (
     <Flex
       as="main"
@@ -20,12 +36,20 @@ export default function Home() {
           forma simples e intuitiva.
         </Text>
         <Flex justifyContent="center" gap={8} mt="20px">
-          <Button variant="link" size="lg" colorScheme="purple">
-            <Link href="/processes">Processos</Link>
-          </Button>
-          <Button variant="link" size="lg" colorScheme="purple">
-            <Link href="/start-process">Abir Processo</Link>
-          </Button>
+          {routes.map((route) => {
+            return (
+              <Button
+                key={route.name}
+                as={Link}
+                size="lg"
+                colorScheme="purple"
+                name={route.name}
+                onClick={handleClick}
+              >
+                {route.label}
+              </Button>
+            );
+          })}
         </Flex>
       </Stack>
     </Flex>

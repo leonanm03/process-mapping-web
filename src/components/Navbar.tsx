@@ -4,7 +4,7 @@ import { Navigation } from ".";
 
 export function Navbar() {
   return (
-    <Flex as="nav" px="25px" height="60px" alignItems="center">
+    <Flex as="nav" px="25px" height="60px" alignItems="center" bg="purple.200">
       <Heading as="h1" fontSize="20px">
         <Link href="/">
           <Flex gap={3}>
