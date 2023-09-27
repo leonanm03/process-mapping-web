@@ -2,13 +2,12 @@
 import { GetProcess } from "@/protocols";
 import { getProcesses } from "@/services";
 import { createContext, useState } from "react";
-import { useEffect } from "react";
 
 export const ProcessesContext = createContext(
   {} as {
     processes: GetProcess[];
     setProcesses: React.Dispatch<React.SetStateAction<GetProcess[]>>;
-    refreshProcesses: () => void;
+    fetchProcesses: () => void;
   }
 );
 
@@ -19,13 +18,8 @@ export const ProcessesProvider = ({
 }) => {
   const [processes, setProcesses] = useState<GetProcess[]>([]);
 
-  useEffect(() => {
-    getProcesses().then((processes) => {
-      setProcesses(processes);
-    });
-  }, []);
-
-  const refreshProcesses = () => {
+  const fetchProcesses = () => {
+    console.log("fetching processes");
     getProcesses().then((processes) => {
       setProcesses(processes);
     });
@@ -36,7 +30,7 @@ export const ProcessesProvider = ({
       value={{
         processes,
         setProcesses,
-        refreshProcesses,
+        fetchProcesses,
       }}
     >
       {children}

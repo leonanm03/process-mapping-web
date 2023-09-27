@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 export function ProcessData(process: GetProcess) {
   const { id, name, description, fatherProcessId, area } = process;
-  const { refreshProcesses } = useContext(ProcessesContext);
+  const { fetchProcesses } = useContext(ProcessesContext);
 
   async function handleDeleteProcess() {
     if (
@@ -15,7 +15,7 @@ export function ProcessData(process: GetProcess) {
     ) {
       try {
         await deleteProcess(id);
-        refreshProcesses();
+        fetchProcesses();
       } catch (error) {
         console.log(error);
       }

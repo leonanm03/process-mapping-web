@@ -2,10 +2,15 @@
 import { ProcessData } from "@/components";
 import { SubprocessCascade } from "@/components/SubprocessCascade";
 import { ProcessesContext } from "@/contexts/processesContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Processes() {
-  const { processes } = useContext(ProcessesContext);
+  const { processes, fetchProcesses } = useContext(ProcessesContext);
+
+  useEffect(() => {
+    fetchProcesses();
+  }, []);
+
   return (
     <main className="flex flex-col justify-center p-6 bg-base-200">
       {processes.length > 0 &&
