@@ -15,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className="bg-purple-100">
-      <body suppressHydrationWarning={true} className="min-w-full min-h-full">
+    <html lang="pt-BR" className="bg-[#FAF5FF]">
+      <body
+        suppressHydrationWarning={true}
+        className="min-w-full min-h-full bg-[#FAF5FF]"
+      >
         <Providers>
           <ProcessesProvider>
             <Navbar />

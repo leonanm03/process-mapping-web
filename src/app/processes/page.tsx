@@ -2,6 +2,7 @@
 import { ProcessData } from "@/components";
 import { SubprocessCascade } from "@/components/SubprocessCascade";
 import { ProcessesContext } from "@/contexts/processesContext";
+import { Container } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 
 export default function Processes() {
@@ -12,7 +13,7 @@ export default function Processes() {
   }, []);
 
   return (
-    <main className="flex flex-col justify-center p-6 bg-base-200">
+    <Container as="main" minW="full" bg="purple.50">
       {processes.length > 0 &&
         processes.map((process) => (
           <div key={process.id} className="collapse bg-accent mt-5 p-1">
@@ -31,6 +32,6 @@ export default function Processes() {
             </div>
           </div>
         ))}
-    </main>
+    </Container>
   );
 }
