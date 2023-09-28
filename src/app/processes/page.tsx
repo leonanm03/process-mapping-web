@@ -10,6 +10,8 @@ import {
   AccordionPanel,
   Box,
   Center,
+  Container,
+  Flex,
   Heading,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
@@ -22,28 +24,35 @@ export default function Processes() {
   }, []);
 
   return (
-    <>
+    <Container minW="full">
       {processes.length > 0 &&
         processes.map((process) => (
-          <Accordion allowToggle key={process.id}>
-            <AccordionItem>
+          <Accordion colorScheme="purple" allowToggle key={process.id} mt="8px">
+            <AccordionItem bg="purple.400" color="black" borderRadius="5px">
               <h2>
                 <AccordionButton>
-                  <Box as="span" flex="1" textAlign="left">
+                  <Box as="span" flex="1" textAlign="left" fontWeight="bold">
                     {process.name}
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <AccordionPanel pb={4}>
-                <ProcessData {...process} />
-                {process.subProcess.length > 0 && (
-                  <div className="mt-3 text-l font-medium">subprocessos:</div>
-                )}
-                {process.subProcess.map((subprocess) => (
-                  <SubprocessCascade key={subprocess.id} {...subprocess} />
-                ))}
-              </AccordionPanel>
+              <Flex>
+                <Box minW="8px" bg="purple.400" />
+                <AccordionPanel pb={4} bg="purple.50">
+                  <ProcessData {...process} />
+                  {process.subProcess.length > 0 && (
+                    <Center mt="30px" mb="0px">
+                      <Heading as="p" fontSize="17px">
+                        Subprocessos:
+                      </Heading>
+                    </Center>
+                  )}
+                  {process.subProcess.map((subprocess) => (
+                    <SubprocessCascade key={subprocess.id} {...subprocess} />
+                  ))}
+                </AccordionPanel>
+              </Flex>
             </AccordionItem>
           </Accordion>
         ))}
@@ -54,6 +63,6 @@ export default function Processes() {
           </Heading>
         </Center>
       )}
-    </>
+    </Container>
   );
 }

@@ -19,7 +19,6 @@ export const ProcessesProvider = ({
   const [processes, setProcesses] = useState<GetProcess[]>([]);
 
   const fetchProcesses = () => {
-    console.log("fetching processes");
     getProcesses().then((processes) => {
       setProcesses(processes);
     });
