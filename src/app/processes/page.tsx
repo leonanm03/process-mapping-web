@@ -11,7 +11,6 @@ import {
   Box,
   Center,
   Container,
-  Flex,
   Heading,
 } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";

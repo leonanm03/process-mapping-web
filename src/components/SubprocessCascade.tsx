@@ -30,6 +30,7 @@ export function SubprocessCascade(process: GetProcess) {
         </h2>
         <AccordionPanel
           pb={4}
+          pr={0}
           bg="purple.50"
           borderLeft="3px solid"
           borderColor="purple.200"
