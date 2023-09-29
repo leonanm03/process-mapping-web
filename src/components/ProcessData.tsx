@@ -1,15 +1,7 @@
 import { ProcessesContext } from "@/contexts/processesContext";
 import { GetProcess } from "@/protocols";
 import { deleteProcess } from "@/services";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Link,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, Divider, Flex, Link, Text, VStack } from "@chakra-ui/react";
 import { useContext } from "react";
 
 export function ProcessData(process: GetProcess) {
@@ -82,29 +74,5 @@ export function ProcessData(process: GetProcess) {
         </Button>
       </VStack>
     </Flex>
-    // <TableContainer>
-    //   <Table variant="simple">
-    //     <Thead>
-    //       <Tr>
-    //         <Th>Identificação</Th>
-    //         <Th>Nome</Th>
-    //         <Th>Área</Th>
-    //         <Th>Descrição</Th>
-    //         <Th>Processo Pai</Th>
-    //         <Th>Opções</Th>
-    //       </Tr>
-    //     </Thead>
-    //     <Tbody>
-    //       <Tr>
-    //         <Td>{id}</Td>
-    //         <Td>{name}</Td>
-    //         <Td>{area.name}</Td>
-    //         <Td>{description}</Td>
-    //         <Td>{fatherProcessId}</Td>
-    //         <Td>teste</Td>
-    //       </Tr>
-    //     </Tbody>
-    //   </Table>
-    // </TableContainer>
   );
 }
