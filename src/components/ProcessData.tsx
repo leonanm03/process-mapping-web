@@ -1,6 +1,15 @@
 import { ProcessesContext } from "@/contexts/processesContext";
 import { GetProcess } from "@/protocols";
 import { deleteProcess } from "@/services";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Link,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { useContext } from "react";
 
 export function ProcessData(process: GetProcess) {
@@ -22,52 +31,80 @@ export function ProcessData(process: GetProcess) {
     }
   }
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Identificação</th>
-            <th>Nome</th>
-            <th>Área</th>
-            <th>Descrição</th>
-            <th>Processo Pai</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{id}</td>
-            <td>{name}</td>
-            <td>{area.name}</td>
-            <td>{description}</td>
-            <td>{fatherProcessId}</td>
-            <td>
-              <div>
-                <div className="flex flex-col py-0">
-                  <a
-                    href={`/start-subprocess/${id}`}
-                    className="btn btn-accent btn-xs m-1"
-                  >
-                    Novo Subprocesso
-                  </a>
-                  <a
-                    href={`/edit-process/${id}`}
-                    className="btn btn-primary btn-xs m-1"
-                  >
-                    Editar
-                  </a>
-                  <button
-                    onClick={handleDeleteProcess}
-                    className="btn btn-warning btn-xs m-1"
-                  >
-                    Excluir
-                  </button>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Flex minW="full" justifyContent="space-between">
+      <VStack minW="40px">
+        <Text>Identificação</Text>
+        <Divider />
+        <Text>{id}</Text>
+      </VStack>
+      <Divider mx="2px" orientation="vertical" />
+      <VStack minW="40px">
+        <Text>Nome</Text>
+        <Divider />
+        <Text>{name}</Text>
+      </VStack>
+      <Divider mx="2px" orientation="vertical" />
+      <VStack minW="40px">
+        <Text>Área</Text>
+        <Divider />
+        <Text>{area.name}</Text>
+      </VStack>
+      <Divider mx="2px" orientation="vertical" />
+      <VStack minW="40px">
+        <Text>Descrição</Text>
+        <Divider />
+        <Text maxW="500px">{description}</Text>
+      </VStack>
+      <Divider mx="2px" orientation="vertical" />
+      <VStack minW="40px">
+        <Text>Processo Pai</Text>
+        <Divider />
+        <Text>{fatherProcessId}</Text>
+      </VStack>
+      <Divider mx="2px" orientation="vertical" />
+      <VStack minW="40px">
+        <Text>Opções</Text>
+        <Divider />
+        <Button
+          as={Link}
+          onClick={handleDeleteProcess}
+          size="sm"
+          colorScheme="green"
+          minW={40}
+        >
+          Novo Subprocesso
+        </Button>
+        <Button as={Link} size="sm" colorScheme="purple" minW={40}>
+          Editar
+        </Button>
+        <Button as={Link} size="sm" colorScheme="red" minW={40}>
+          Excluir
+        </Button>
+      </VStack>
+    </Flex>
+    // <TableContainer>
+    //   <Table variant="simple">
+    //     <Thead>
+    //       <Tr>
+    //         <Th>Identificação</Th>
+    //         <Th>Nome</Th>
+    //         <Th>Área</Th>
+    //         <Th>Descrição</Th>
+    //         <Th>Processo Pai</Th>
+    //         <Th>Opções</Th>
+    //       </Tr>
+    //     </Thead>
+    //     <Tbody>
+    //       <Tr>
+    //         <Td>{id}</Td>
+    //         <Td>{name}</Td>
+    //         <Td>{area.name}</Td>
+    //         <Td>{description}</Td>
+    //         <Td>{fatherProcessId}</Td>
+    //         <Td>teste</Td>
+    //       </Tr>
+    //     </Tbody>
+    //   </Table>
+    // </TableContainer>
   );
 }
