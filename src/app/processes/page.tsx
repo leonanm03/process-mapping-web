@@ -37,22 +37,24 @@ export default function Processes() {
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <Flex>
-                <Box minW="8px" bg="purple.400" />
-                <AccordionPanel pb={4} bg="purple.50">
-                  <ProcessData {...process} />
-                  {process.subProcess.length > 0 && (
-                    <Center mt="30px" mb="0px">
-                      <Heading as="p" fontSize="17px">
-                        Subprocessos:
-                      </Heading>
-                    </Center>
-                  )}
-                  {process.subProcess.map((subprocess) => (
-                    <SubprocessCascade key={subprocess.id} {...subprocess} />
-                  ))}
-                </AccordionPanel>
-              </Flex>
+              <AccordionPanel
+                pb={4}
+                bg="purple.50"
+                borderX="8px solid"
+                borderColor="purple.400"
+              >
+                <ProcessData {...process} />
+                {process.subProcess.length > 0 && (
+                  <Center mt="30px" mb="0px">
+                    <Heading as="p" fontSize="17px">
+                      Subprocessos:
+                    </Heading>
+                  </Center>
+                )}
+                {process.subProcess.map((subprocess) => (
+                  <SubprocessCascade key={subprocess.id} {...subprocess} />
+                ))}
+              </AccordionPanel>
             </AccordionItem>
           </Accordion>
         ))}
