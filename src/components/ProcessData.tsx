@@ -1,6 +1,6 @@
 import { ProcessesContext } from "@/contexts/processesContext";
 import { GetProcess } from "@/protocols";
-import { deleteProcess, getProcesses } from "@/services";
+import { deleteProcess } from "@/services";
 import { useContext } from "react";
 
 export function ProcessData(process: GetProcess) {

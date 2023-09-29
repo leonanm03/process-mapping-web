@@ -27,7 +27,7 @@ export default function Processes() {
     <Container minW="full">
       {processes.length > 0 &&
         processes.map((process) => (
-          <Accordion colorScheme="purple" allowToggle key={process.id} mt="8px">
+          <Accordion allowToggle key={process.id} mt="8px">
             <AccordionItem bg="purple.400" color="black" borderRadius="5px">
               <h2>
                 <AccordionButton>
